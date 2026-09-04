@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-mm: "Noto Sans Myanmar", sans-serif;
+
+  --color-gh-bg: #0d1117;
+  --color-gh-panel: #161b22;
+  --color-gh-panel-2: #1c2128;
+  --color-gh-border: #30363d;
+  --color-gh-border-soft: #21262d;
+  --color-gh-text: #e6edf3;
+  --color-gh-mute: #8b949e;
+  --color-gh-faint: #6e7681;
+  --color-gh-blue: #58a6ff;
+  --color-gh-green: #3fb950;
+  --color-gh-accent: #2f81f7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #0d1117;
+  color: #e6edf3;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(47, 129, 247, 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 8px;
+  border: 2px solid #0d1117;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+.font-mono2 {
+  font-family: var(--font-mono);
+}
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* premium glows over github base */
+.hero-glow {
+  background:
+    radial-gradient(600px 320px at 18% 0%, rgba(47, 129, 247, 0.16), transparent 65%),
+    radial-gradient(520px 300px at 85% 10%, rgba(63, 185, 80, 0.1), transparent 65%),
+    radial-gradient(700px 400px at 50% 100%, rgba(137, 87, 229, 0.08), transparent 70%);
+}
+
+.gh-card {
+  background: linear-gradient(180deg, #161b22 0%, #13171e 100%);
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gh-card:hover {
+  border-color: #484f58;
+}
+
+.gh-card-lift:hover {
+  transform: translateY(-3px);
+  border-color: #58a6ff66;
+  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(88, 166, 255, 0.08);
+}
+
+.btn-primary-gh {
+  background: #238636;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.btn-primary-gh:hover {
+  background: #2ea043;
+  transform: translateY(-1px);
+}
+.btn-primary-gh:active {
+  transform: translateY(0);
+}
+
+.btn-gh {
+  background: #21262d;
+  border: 1px solid #373e47;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.btn-gh:hover {
+  background: #2a3139;
+  border-color: #4a535e;
+  transform: translateY(-1px);
+}
+
+.link-blue {
+  color: #58a6ff;
+  text-decoration: none;
+}
+.link-blue:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* contribution cells */
+.contrib-cell {
+  border-radius: 2px;
+  outline-offset: 2px;
+  transition: transform 0.12s ease;
+}
+.contrib-cell:hover,
+.contrib-cell:focus-visible {
+  transform: scale(1.25);
+  outline: 1px solid #58a6ff;
+}
+
+/* reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+code.inline-code {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  background: rgba(110, 118, 129, 0.18);
+  border: 1px solid #30363d;
+  padding: 1px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.file-tree-line {
+  position: relative;
+}
+.file-tree-line::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 22px;
+  bottom: -6px;
+  width: 1px;
+  background: #30363d;
+}
+.file-tree-line:last-child::before {
+  display: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+[id] {
+  scroll-margin-top: 4.5rem;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
